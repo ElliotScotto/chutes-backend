@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chutesapp-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: chutesapp
+  template:
+    metadata:
+      labels:
+        app: chutesapp
+    spec:
+      containers:
+        - name: chutesapp
+          image: docker.io/elliotscotto/chutesapp:latest
+          imagePullPolicy: IfNotPresent

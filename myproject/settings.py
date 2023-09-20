@@ -140,7 +140,7 @@ REST_FRAMEWORK = {
 
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
-     config('HOST_ONE'),
+    config('HOST_ONE'),
     config('HOST_TWO'),
     config('HOST_THREE'),
     config('HOST_FOUR')

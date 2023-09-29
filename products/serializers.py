@@ -18,7 +18,9 @@ class ScrapSerializer(serializers.ModelSerializer):
     photo5_url = serializers.SerializerMethodField()
 
     def get_photo1_url(self, obj):
+        print("get_photo1_url 1")
         if obj.photo1:
+            print("get_photo1_url 2")
             return settings.MEDIA_URL + str(obj.photo1)
         return None
     def get_photo2_url(self, obj):

@@ -53,7 +53,9 @@ class ScrapListCreate(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         try:
             # Définir l'owner comme étant le premier utilisateur
-            serializer.save(owner=UserCustom.objects.first())
+            scrap=serializer.save(owner=UserCustom.objects.first(), commit=False)
+            scrap.photo1 = self.request.FILES.get('photo1')
+            scrap.save()
         except Exception as e:
             logger.error("Error in perform_create: %s", str(e))
             raise e  # re-raise the exception to handle it in the calling function (e.g., post method)

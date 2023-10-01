@@ -2,11 +2,14 @@ import logging
 from django.http import HttpResponse
 from rest_framework import generics,status
 from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from rest_framework.parsers import MultiPartParser
 from .models import UserCustom,Scrap
 from .serializers import ScrapSerializer
 from django.core.files.uploadedfile import UploadedFile
-
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate
+from .forms import UserCustomCreationForm
 
 logger = logging.getLogger(__name__)
 
@@ -14,6 +17,16 @@ def index(request):
     return HttpResponse("Hello, World!")
 def home(request):
     return HttpResponse("Bienvenue sur la page d'accueil!")
+
+@api_view(['POST'])
+def signup_api(request):
+    if request.method == 'POST':
+        form = UserCustomCreationForm(request.data)
+        if form.is_valid():
+            user = form.save()
+            return Response({"message": "User registered successfully!"}, status=status.HTTP_201_CREATED)
+        else:
+            return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ScrapListCreate(generics.ListCreateAPIView):
     queryset = Scrap.objects.all().select_related('owner')
@@ -53,7 +66,7 @@ class ScrapListCreate(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         try:
             # Définir l'owner comme étant le premier utilisateur
-            scrap=serializer.save(owner=UserCustom.objects.first(), commit=False)
+            scrap=serializer.save(owner=UserCustom.objects.first())
             scrap.photo1 = self.request.FILES.get('photo1')
             scrap.save()
         except Exception as e:

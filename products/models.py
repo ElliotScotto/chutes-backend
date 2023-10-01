@@ -66,6 +66,7 @@ class Scrap(models.Model):
     material = ArrayField(models.CharField(max_length=20, choices=MATERIAL_CHOICES))
     category = ArrayField(models.CharField(max_length=20, choices=CATEGORY_CHOICES))
     home_pickup = models.BooleanField(default=True)
+    sending = models.BooleanField(default=False)
     product_location = models.CharField(max_length=45, default="Some Default City")
     owner = models.ForeignKey('products.UserCustom', on_delete=models.CASCADE, related_name='scraps')
 

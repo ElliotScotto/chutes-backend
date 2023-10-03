@@ -1,9 +1,13 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
+from django.utils.translation import gettext as _
 
 class UserCustom(AbstractUser):
-    phone_number = models.CharField(max_length=15)
+    email = models.EmailField(unique=True, blank=False, null=False, error_messages={
+        'unique': _("Adresse e-mail déjà utilisée !"),
+    })
+    phone_number = models.CharField(unique=True, max_length=15)
     address = models.CharField(max_length=100)
     city = models.CharField(max_length=50)
 

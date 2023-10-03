@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-03 15:55+0200\n"
+"POT-Creation-Date: 2023-10-03 16:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1225,6 +1225,10 @@ msgstr ""
 msgid "Connect, get help, or contribute"
 msgstr ""
 
-#: products/views.py:28
+#: products/views.py:30
 msgid "User registered successfully!"
 msgstr "Vous êtes inscrit avec succès !"
+
+#: products/views.py:32
+msgid "Email address already in use!"
+msgstr "Adresse e-mail déjà utilisée !"

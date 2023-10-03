@@ -121,7 +121,7 @@ LANGUAGES = [
     ('fr', 'French'),
 ]
 
-LANGUAGE_CODE = 'fr-fr'
+LANGUAGE_CODE = 'fr'
 
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),

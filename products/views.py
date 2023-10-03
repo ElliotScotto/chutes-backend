@@ -10,6 +10,7 @@ from django.core.files.uploadedfile import UploadedFile
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from .forms import UserCustomCreationForm
+from django.utils.translation import gettext as _
 
 logger = logging.getLogger(__name__)
 
@@ -24,7 +25,7 @@ def signup_api(request):
         form = UserCustomCreationForm(request.data)
         if form.is_valid():
             user = form.save()
-            return Response({"message": "User registered successfully!"}, status=status.HTTP_201_CREATED)
+            return Response({"message": _("User registered successfully!")}, status=status.HTTP_201_CREATED)
         else:
             return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
 

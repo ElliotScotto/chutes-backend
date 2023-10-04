@@ -5,9 +5,11 @@ from django.utils.translation import gettext as _
 
 class UserCustom(AbstractUser):
     email = models.EmailField(unique=True, blank=False, null=False, error_messages={
-        'unique': _("Adresse e-mail déjà utilisée !"),
+        'unique': _("Un utilisateur est déjà inscrit avec cette adresse e-mail."),
     })
-    phone_number = models.CharField(unique=True, max_length=15)
+    phone_number = models.CharField(unique=True, max_length=15, error_messages={
+        'unique': _("Un utilisateur est déjà inscrit avec ce numéro de téléphone."),
+    })
     address = models.CharField(max_length=100)
     city = models.CharField(max_length=50)
 

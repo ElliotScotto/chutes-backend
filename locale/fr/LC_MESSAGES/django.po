@@ -1227,7 +1227,7 @@ msgstr ""
 
 #: products/views.py:30
 msgid "User registered successfully!"
-msgstr "Vous êtes inscrit avec succès !"
+msgstr "Vous êtes inscrit avec succès."
 
 #: products/views.py:32
 msgid "Email address already in use!"

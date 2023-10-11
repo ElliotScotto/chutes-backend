@@ -68,6 +68,7 @@ class Scrap(models.Model):
     description = models.TextField(max_length=300)
     condition = models.CharField(max_length=20, choices=CONDITION_CHOICES)
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    free = models.BooleanField(default=False)
     weight = models.CharField(max_length=30, choices=WEIGHT_CHOICES)
     material = ArrayField(models.CharField(max_length=20, choices=MATERIAL_CHOICES))
     category = ArrayField(models.CharField(max_length=20, choices=CATEGORY_CHOICES))

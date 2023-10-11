@@ -58,4 +58,4 @@ class ScrapSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Scrap
-        fields = ('id', 'owner', 'owner_detail', 'photo1_url', 'photo2_url', 'photo3_url', 'photo4_url', 'photo5_url', 'name', 'description', 'condition', 'price', 'weight', 'material', 'category', 'home_pickup', 'sending', 'created_at')
+        fields = ('id', 'owner', 'owner_detail', 'photo1_url', 'photo2_url', 'photo3_url', 'photo4_url', 'photo5_url', 'name', 'description', 'condition', 'price', 'free','weight', 'material', 'category', 'home_pickup', 'sending', 'created_at')
